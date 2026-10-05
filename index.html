@@ -1,20 +1,217 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Cyber-Shield interactive scam verification prototype"><title>Cyber-Shield — Scam Contact Checker</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
-:root{--bg:#07110f;--panel:#0c1916;--panel2:#10211d;--text:#eef8f4;--muted:#94aaa3;--line:#1d3831;--mint:#18d5ae;--mint2:#8bf2d8;--danger:#ff6d73;--warning:#ffc65b;--safe:#41df9d}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;line-height:1.55}.bg{position:fixed;inset:0;pointer-events:none;opacity:.17;background-image:linear-gradient(rgba(24,213,174,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(24,213,174,.06) 1px,transparent 1px);background-size:52px 52px;z-index:-1}a{color:inherit;text-decoration:none}.top{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 6vw;border-bottom:1px solid rgba(255,255,255,.06);position:sticky;top:0;background:rgba(7,17,15,.88);backdrop-filter:blur(18px);z-index:10}.brand{font:700 19px "Space Grotesk";display:flex;gap:10px;align-items:center}.mark{width:32px;height:32px;border:2px solid var(--mint);border-radius:9px;display:grid;place-items:center;color:var(--mint);transform:rotate(-18deg)}nav{display:flex;gap:26px;color:#9fb0ab;font-size:14px}nav a:hover{color:var(--mint)}.langs{display:flex;border:1px solid var(--line);border-radius:10px;padding:3px}.langs button{border:0;background:none;color:#71867f;padding:5px 8px;border-radius:7px;font-weight:700;font-size:11px;cursor:pointer}.langs .on{background:#17352d;color:var(--mint)}.section{padding:100px 6vw;max-width:1320px;margin:auto}.hero{min-height:680px;display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center}.eyebrow{font-size:11px;letter-spacing:2px;color:var(--mint);font-weight:700}.hero h1{font:700 clamp(52px,7vw,92px)/.96 "Space Grotesk";letter-spacing:-5px;margin:22px 0}.hero h1 span{color:var(--mint)}.hero p,.heading p{color:var(--muted);font-size:17px;max-width:680px}.actions{display:flex;gap:12px;margin:32px 0 44px;flex-wrap:wrap}.btn{padding:14px 20px;border-radius:11px;font-weight:700;font-size:14px;border:1px solid var(--line);display:inline-flex;gap:10px;align-items:center}.primary{background:var(--mint);color:#04100d;border-color:var(--mint)}.ghost{background:#0c1916}.trust{display:flex;gap:30px}.trust strong{display:block;font:700 23px "Space Grotesk"}.trust small{color:#6f857e}.hero-card{height:430px;max-width:430px;width:100%;justify-self:end;border:1px solid #1c4037;border-radius:30px;background:radial-gradient(circle at 50% 40%,rgba(24,213,174,.16),transparent 40%),linear-gradient(145deg,#0d211c,#07110f);display:grid;place-items:center;position:relative;overflow:hidden}.ring{position:absolute;width:270px;height:270px;border:1px solid rgba(24,213,174,.25);border-radius:50%;box-shadow:0 0 0 35px rgba(24,213,174,.025),0 0 0 70px rgba(24,213,174,.02)}.shield{width:106px;height:120px;clip-path:polygon(50% 0,91% 17%,85% 62%,50% 100%,15% 62%,9% 17%);background:linear-gradient(160deg,var(--mint2),var(--mint));display:grid;place-items:center;color:#05211a;font-size:42px;font-weight:900;z-index:1}.cardtext{position:absolute;bottom:46px;text-align:center;z-index:1}.cardtext b{font:700 23px "Space Grotesk"}.status{display:block;color:#8ca49c;font-size:12px;margin-top:8px}.heading{margin-bottom:38px}.heading h2{font:700 clamp(36px,4.5vw,58px)/1 "Space Grotesk";letter-spacing:-2px;margin:14px 0}.checker{border:1px solid var(--line);background:rgba(12,25,22,.9);border-radius:24px;padding:26px}.progress-top{display:flex;justify-content:space-between;color:#8ba29a;font-size:12px}.bar{height:6px;background:#17332c;border-radius:99px;margin:10px 0 28px;overflow:hidden}.bar>i{display:block;height:100%;background:var(--mint);width:33%;transition:.25s}.scenarios{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.scenario{background:#10211d;border:1px solid #1d3831;border-radius:15px;padding:20px;text-align:left;color:var(--text);cursor:pointer}.scenario:hover{border-color:#2b6154;transform:translateY(-1px)}.ico{font-size:26px;color:var(--mint)}.st{display:block;font-weight:700;margin-top:12px}.sd{display:block;color:#82978f;font-size:13px;margin-top:4px}.note{margin-top:16px;padding:14px 16px;border:1px solid #263f38;border-radius:12px;background:#0a1714;color:#9eb1ab;font-size:13px}.q h3{font-size:21px;margin:8px 0 18px}.answers{display:grid;gap:10px}.answer{background:#0f201b;border:1px solid #24463d;border-radius:12px;padding:13px 15px;color:var(--text);text-align:left;cursor:pointer}.answer:hover{border-color:var(--mint)}.result{margin-top:18px;border-radius:16px;padding:22px;border:1px solid #28483e;background:#0c1b17}.result.low{border-color:#2a765c}.result.mid{border-color:#7b5c1f}.result.high{border-color:#7f3036}.result h3{margin:0 0 6px}.result p{margin:0;color:#b0beb8}.result .actions2{margin-top:15px;display:flex;gap:10px;flex-wrap:wrap}.smallbtn{border:1px solid #31554b;background:#10221d;color:var(--text);border-radius:9px;padding:9px 12px;cursor:pointer}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat{padding:22px;border:1px solid var(--line);background:#0c1916;border-radius:15px}.num{font:700 33px "Space Grotesk"}.lab{margin-top:8px;color:#91a69f;font-size:13px}.small{color:#687e76;font-size:11px;margin-top:6px}.insights{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.insight,.about,.emergency{padding:24px;border:1px solid var(--line);background:#0c1916;border-radius:15px}.insight b{color:var(--mint)}.insight h3{margin:8px 0}.insight p,.about p,.emergency p{color:#93a69f;font-size:14px}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:15px}.tablewrap table{width:100%;border-collapse:collapse;min-width:850px}.tablewrap th,.tablewrap td{padding:14px 15px;text-align:left;border-bottom:1px solid #1a302a;font-size:13px}.tablewrap th{color:var(--mint);font-size:11px;letter-spacing:1px}.tablewrap tr:last-child td{border-bottom:0}.hi{background:#10251f}.workflow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:10px;align-items:center;margin-top:20px}.wf{padding:16px;border:1px solid var(--line);border-radius:12px;background:#0c1916}.wf span{display:block;color:var(--mint);font-size:11px}.wf strong{display:block;margin:5px 0}.wf small{color:#789087}.arr{color:#456f63;text-align:center}.about-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:14px}.about h2{font:700 54px "Space Grotesk";margin:8px 0}.privacy{margin-top:18px;padding:13px 14px;border:1px solid #245b4c;border-radius:10px;color:#9de8d4}.emergency{background:linear-gradient(145deg,#1b1712,#0e1916);border-color:#514028}.tag{color:var(--warning);font-size:11px;font-weight:700;letter-spacing:1.5px}.emergency .num2{font:700 54px "Space Grotesk"}.back{display:inline-block;margin-top:12px;color:var(--mint);cursor:pointer}footer{padding:28px 6vw;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;color:#667b74;font-size:12px}@media(max-width:900px){nav{display:none}.hero{grid-template-columns:1fr}.hero-card{justify-self:start}.stats{grid-template-columns:repeat(2,1fr)}.insights,.about-grid{grid-template-columns:1fr}.workflow{grid-template-columns:1fr}.arr{transform:rotate(90deg)}.scenarios{grid-template-columns:1fr}}@media(max-width:560px){.section{padding:72px 5vw}.top{padding:0 5vw}.langs{margin-left:auto}.hero h1{letter-spacing:-3px}.trust{gap:18px}.stats{grid-template-columns:1fr}.hero-card{height:360px}}
-</style></head><body>
-<div class="bg"></div><header class="top"><a class="brand" href="#home"><span class="mark">⌁</span>Cyber<span style="color:var(--mint)">-Shield</span></a><nav><a href="#checker" data-t="navChecker">Checker</a><a href="#research" data-t="navResearch">Research</a><a href="#solutions" data-t="navSolutions">Solutions</a><a href="#about" data-t="navAbout">About</a></nav><div class="langs"><button class="on" data-lang="en">EN</button><button data-lang="ru">RU</button><button data-lang="kk">KZ</button></div></header>
-<main><section id="home" class="section hero"><div><div class="eyebrow">● <span data-t="eyebrow">RAPID THREAT VERIFICATION</span></div><h1 data-t="heroTitle">Pause. Verify.<br><span>Protect yourself.</span></h1><p data-t="heroText">Cyber-Shield is an interactive prototype that helps users assess suspicious calls, SMS messages, links and offers before they act.</p><div class="actions"><a class="btn primary" href="#checker" data-t="heroButton">Check a contact →</a><a class="btn ghost" href="#research" data-t="heroResearch">View our research</a></div><div class="trust"><div><strong>0</strong><small data-t="trust0">personal data stored</small></div><div><strong>4</strong><small data-t="trust4">demo scenarios</small></div><div><strong>3</strong><small data-t="trust3">risk levels</small></div></div></div><div class="hero-card"><div class="ring"></div><div class="shield">✓</div><div class="cardtext"><b>Threat Check</b><span class="status" data-t="ready">Ready to verify</span></div></div></section>
-<section id="checker" class="section"><div class="heading"><div class="eyebrow">01 / <span data-t="checkerEyebrow">CONTACT CHECKER</span></div><h2 data-t="checkerTitle">What are you dealing with?</h2><p data-t="checkerText">Choose the situation. The prototype will ask a few simple questions and give a preliminary risk level.</p></div><div class="checker"><div class="progress-top"><span id="step">Choose a scenario</span><span id="pct">0%</span></div><div class="bar"><i id="prog"></i></div><div id="checkerArea"><div class="scenarios"><button class="scenario" onclick="start('bank')"><span class="ico">₸</span><span class="st" data-t="bankTitle">Bank call</span><span class="sd" data-t="bankDesc">Someone claims to be a bank employee.</span></button><button class="scenario" onclick="start('sms')"><span class="ico">▣</span><span class="st" data-t="smsTitle">SMS / message</span><span class="sd" data-t="smsDesc">A message asks you to click, pay or verify.</span></button><button class="scenario" onclick="start('link')"><span class="ico">↗</span><span class="st" data-t="linkTitle">Suspicious link</span><span class="sd" data-t="linkDesc">A website or URL looks unusual.</span></button><button class="scenario" onclick="start('offer')"><span class="ico">%</span><span class="st" data-t="offerTitle">Offer / investment</span><span class="sd" data-t="offerDesc">Someone promises profit or urgent rewards.</span></button></div><div class="note" data-t="note">This is a research prototype, not a live fraud database. Never enter passwords, PINs, card numbers or SMS codes.</div></div></div></section>
-<section id="research" class="section"><div class="heading"><div class="eyebrow">02 / <span data-t="researchEye">RESEARCH SNAPSHOT</span></div><h2 data-t="researchTitle">The problem is growing — and human behaviour matters.</h2><p data-t="researchText">Our research combines statistical indicators, international comparison, literature review and analysis of existing solutions.</p></div><div class="stats"><div class="stat"><div class="num">22,870</div><div class="lab" data-t="s1">registered internet-fraud cases in 2024</div></div><div class="stat"><div class="num">+24.7%</div><div class="lab" data-t="s2">more cases than in H1 2024</div><div class="small" data-t="ss2">Research presentation indicator</div></div><div class="stat"><div class="num">$16.6B</div><div class="lab" data-t="s3">FBI IC3 reported cybercrime losses in 2024</div></div><div class="stat"><div class="num">38%</div><div class="lab" data-t="s4">of FTC fraud reporters lost money in 2024</div><div class="small" data-t="ss4">27% reported losses in 2023</div></div></div><div class="insights"><article class="insight"><b>A</b><h3 data-t="i1h">Social engineering</h3><p data-t="i1p">Scammers exploit urgency, authority and emotional pressure.</p></article><article class="insight"><b>B</b><h3 data-t="i2h">The usability gap</h3><p data-t="i2p">Users need a simple decision aid at the critical moment.</p></article><article class="insight"><b>C</b><h3 data-t="i3h">Explain, don't scare</h3><p data-t="i3p">Detect the risk, explain why, then guide the next action.</p></article></div></section>
-<section id="solutions" class="section"><div class="heading"><div class="eyebrow">03 / <span data-t="solEye">EXISTING SOLUTIONS</span></div><h2 data-t="solTitle">Cyber-Shield connects the missing pieces.</h2></div><div class="tablewrap"><table><thead><tr><th>Solution</th><th>Purpose</th><th>Strength</th><th>Limitation</th></tr></thead><tbody><tr><td>KZ-CERT</td><td data-t="kzP">Incident response &amp; guidance</td><td data-t="kzS">Official, free hotline 1400</td><td data-t="kzL">Not a simple real-time assistant</td></tr><tr><td>Google Safe Browsing</td><td>Dangerous site / file warnings</td><td>Automated web protection</td><td>Web-focused, limited scam context</td></tr><tr><td>Truecaller</td><td>Caller ID &amp; spam warnings</td><td>Real-time call warnings</td><td>Focused mainly on calls</td></tr><tr class="hi"><td>Cyber-Shield</td><td>Rapid threat verification</td><td>Simple, human-centred decision tree</td><td>Prototype; no live database</td></tr></tbody></table></div><div class="workflow"><div class="wf"><span>01</span><strong data-t="w1">Choose</strong><small data-t="w1d">Bank call, SMS, link or offer</small></div><div class="arr">→</div><div class="wf"><span>02</span><strong data-t="w2">Answer</strong><small data-t="w2d">Simple button questions</small></div><div class="arr">→</div><div class="wf"><span>03</span><strong data-t="w3">Risk level</strong><small data-t="w3d">Low · Careful · High</small></div><div class="arr">→</div><div class="wf"><span>04</span><strong data-t="w4">Act</strong><small data-t="w4d">Stop · verify · report</small></div></div></section>
-<section id="about" class="section"><div class="about-grid"><div class="about"><div class="eyebrow">04 / PROJECT</div><h2>Cyber-Shield</h2><p data-t="about">A university ICT research project focused on telephone and Internet scams. HTML, CSS and JavaScript demonstrate the decision tree without a database or costly AI.</p><div class="privacy" data-t="privacy">✓ Privacy first: the prototype does not ask for passwords, PINs, card details or verification codes.</div></div><div class="emergency"><div class="tag" data-t="money">IF MONEY IS STOLEN</div><div class="num2">1400</div><p data-t="emergency">Contact your bank immediately, then report the incident to the appropriate authorities.</p></div></div></section></main><footer><span>Cyber-Shield</span><span data-t="footer">Research prototype · Preliminary risk assessment only</span></footer>
-<script>
-const T={en:{navChecker:'Checker',navResearch:'Research',navSolutions:'Solutions',navAbout:'About',eyebrow:'RAPID THREAT VERIFICATION',heroTitle:'Pause. Verify.<br><span>Protect yourself.</span>',heroText:'Cyber-Shield is an interactive prototype that helps users assess suspicious calls, SMS messages, links and offers before they act.',heroButton:'Check a contact →',heroResearch:'View our research',trust0:'personal data stored',trust4:'demo scenarios',trust3:'risk levels',ready:'Ready to verify',checkerEyebrow:'CONTACT CHECKER',checkerTitle:'What are you dealing with?',checkerText:'Choose the situation. The prototype will ask a few simple questions and give a preliminary risk level.',bankTitle:'Bank call',bankDesc:'Someone claims to be a bank employee.',smsTitle:'SMS / message',smsDesc:'A message asks you to click, pay or verify.',linkTitle:'Suspicious link',linkDesc:'A website or URL looks unusual.',offerTitle:'Offer / investment',offerDesc:'Someone promises profit or urgent rewards.',note:'This is a research prototype, not a live fraud database. Never enter passwords, PINs, card numbers or SMS codes.',researchEye:'RESEARCH SNAPSHOT',researchTitle:'The problem is growing — and human behaviour matters.',researchText:'Our research combines statistical indicators, international comparison, literature review and analysis of existing solutions.',s1:'registered internet-fraud cases in 2024',s2:'more cases than in H1 2024',ss2:'Research presentation indicator',s3:'FBI IC3 reported cybercrime losses in 2024',s4:'of FTC fraud reporters lost money in 2024',ss4:'27% reported losses in 2023',i1h:'Social engineering',i1p:'Scammers exploit urgency, authority and emotional pressure.',i2h:'The usability gap',i2p:'Users need a simple decision aid at the critical moment.',i3h:"Explain, don't scare",i3p:'Detect the risk, explain why, then guide the next action.',solEye:'EXISTING SOLUTIONS',solTitle:'Cyber-Shield connects the missing pieces.',kzP:'Incident response & guidance',kzS:'Official, free hotline 1400',kzL:'Not a simple real-time assistant',w1:'Choose',w1d:'Bank call, SMS, link or offer',w2:'Answer',w2d:'Simple button questions',w3:'Risk level',w3d:'Low · Careful · High',w4:'Act',w4d:'Stop · verify · report',about:'A university ICT research project focused on telephone and Internet scams. HTML, CSS and JavaScript demonstrate the decision tree without a database or costly AI.',privacy:'✓ Privacy first: the prototype does not ask for passwords, PINs, card details or verification codes.',money:'IF MONEY IS STOLEN',emergency:'Contact your bank immediately, then report the incident to the appropriate authorities.',footer:'Research prototype · Preliminary risk assessment only'},ru:{navChecker:'Проверка',navResearch:'Исследование',navSolutions:'Решения',navAbout:'О проекте',eyebrow:'БЫСТРАЯ ПРОВЕРКА УГРОЗ',heroTitle:'Остановись. Проверь.<br><span>Защити себя.</span>',heroText:'Cyber-Shield — интерактивный прототип для оценки подозрительных звонков, SMS, ссылок и предложений до действия пользователя.',heroButton:'Проверить контакт →',heroResearch:'Наше исследование',trust0:'персональных данных сохранено',trust4:'демо-сценария',trust3:'уровня риска',ready:'Готов к проверке',checkerEyebrow:'ПРОВЕРКА КОНТАКТА',checkerTitle:'С чем вы столкнулись?',checkerText:'Выберите ситуацию. Прототип задаст несколько простых вопросов и покажет предварительный уровень риска.',bankTitle:'Звонок из банка',bankDesc:'Человек представляется сотрудником банка.',smsTitle:'SMS / сообщение',smsDesc:'Сообщение просит перейти, оплатить или подтвердить действие.',linkTitle:'Подозрительная ссылка',linkDesc:'Сайт или URL выглядит необычно.',offerTitle:'Предложение / инвестиции',offerDesc:'Кто-то обещает прибыль или требует срочного решения.',note:'Это исследовательский прототип, а не актуальная база мошенников. Никогда не вводите пароли, PIN, данные карты или SMS-коды.',researchEye:'ИССЛЕДОВАНИЕ',researchTitle:'Проблема растёт — и поведение человека имеет значение.',researchText:'Исследование объединяет статистические показатели, международное сравнение, обзор литературы и анализ существующих решений.',s1:'зарегистрированных интернет-мошенничеств в 2024 году',s2:'больше случаев, чем в I пол. 2024',ss2:'Показатель из презентации',s3:'потери от киберпреступности FBI IC3 в 2024',s4:'сообщивших о мошенничестве FTC потеряли деньги',ss4:'27% сообщили о потерях в 2023',i1h:'Социальная инженерия',i1p:'Мошенники используют срочность, авторитет и давление на эмоции.',i2h:'Разрыв в удобстве',i2p:'Пользователю нужна простая подсказка именно в критический момент.',i3h:'Объяснять, а не пугать',i3p:'Определить риск, объяснить причину и подсказать следующее действие.',solEye:'СУЩЕСТВУЮЩИЕ РЕШЕНИЯ',solTitle:'Cyber-Shield объединяет недостающие элементы.',kzP:'Реагирование и рекомендации',kzS:'Официальная бесплатная линия 1400',kzL:'Не простой помощник в реальном времени',w1:'Выбрать',w1d:'Звонок, SMS, ссылка или предложение',w2:'Ответить',w2d:'Простые вопросы-кнопки',w3:'Уровень риска',w3d:'Низкий · Внимание · Высокий',w4:'Действовать',w4d:'Остановиться · проверить · сообщить',about:'Университетский ICT-проект об интернет- и телефонном мошенничестве. HTML, CSS и JavaScript демонстрируют дерево решений без БД и дорогого ИИ.',privacy:'✓ Конфиденциальность: прототип не просит пароли, PIN, данные карты или коды подтверждения.',money:'ЕСЛИ ДЕНЬГИ УКРАДЕНЫ',emergency:'Сразу свяжитесь с банком, затем сообщите об инциденте соответствующим органам.',footer:'Исследовательский прототип · Только предварительная оценка риска'}};
-let lang='en';const q={bank:[['Was the call unexpected?',['Yes','No']],['Did the caller ask for a password, PIN, card details or SMS code?',['Yes','No']],['Did they create urgency or pressure you?',['Yes','No']]],sms:[['Does the message ask you to click a link or pay?',['Yes','No']],['Is the sender or request unfamiliar?',['Yes','No']],['Does it create urgency?',['Yes','No']]],link:[['Does the URL/domain look unusual?',['Yes','No']],['Did you receive the link unexpectedly?',['Yes','No']],['Does the page ask for sensitive information?',['Yes','No']]],offer:[['Is a guaranteed or unusually high profit promised?',['Yes','No']],['Are you pressured to decide quickly?',['Yes','No']],['Are you asked to send money first?',['Yes','No']]]};let current=null,idx=0,score=0;
-function tr(k){return (T[lang]&&T[lang][k])||k}function apply(){document.querySelectorAll('[data-t]').forEach(e=>e.innerHTML=tr(e.dataset.t));document.querySelectorAll('.langs button').forEach(b=>b.classList.toggle('on',b.dataset.lang===lang))}document.querySelectorAll('.langs button').forEach(b=>b.onclick=()=>{lang=b.dataset.lang;apply();if(current!==null)renderQ()});apply();
-function start(s){current=s;idx=0;score=0;renderQ();document.getElementById('checker').scrollIntoView({behavior:'smooth',block:'start'})}
-function renderQ(){const qs=q[current],item=qs[idx];document.getElementById('step').textContent=`${idx+1} / 3`;document.getElementById('pct').textContent=Math.round((idx+1)/3*100)+'%';document.getElementById('prog').style.width=((idx+1)/3*100)+'%';document.getElementById('checkerArea').innerHTML=`<div class="q"><h3>${item[0]}</h3><div class="answers">${item[1].map((a,j)=>`<button class="answer" onclick="ans(${j===0})">${a}</button>`).join('')}</div></div><div class="note">${tr('note')}</div>`}
-function ans(yes){score+=yes?1:0;if(idx<2){idx++;renderQ();return}const high=score>=2;const mid=score===1;const title=high?(lang==='ru'?'Высокий риск':'High risk'):mid?(lang==='ru'?'Осторожно':'Careful'):(lang==='ru'?'Низкий риск, сохраняйте бдительность':'Low risk — stay alert');const cls=high?'high':mid?'mid':'low';const advice=high?(lang==='ru'?'Остановитесь. Не сообщайте данные, самостоятельно свяжитесь с организацией и сообщите о попытке мошенничества.':'Stop. Do not share sensitive data; verify independently and report the attempt.'):mid?(lang==='ru'?'Не спешите. Проверьте отправителя, номер или сайт через официальный источник.':'Do not rush. Verify the sender, number or website through an official source.'):(lang==='ru'?'Явных признаков по ответам мало, но всё равно проверяйте источник.':'Your answers show few warning signs, but still verify the source.');document.getElementById('step').textContent='Result';document.getElementById('pct').textContent='100%';document.getElementById('prog').style.width='100%';document.getElementById('checkerArea').innerHTML=`<div class="result ${cls}"><h3>${title}</h3><p>${advice}</p><div class="actions2"><button class="smallbtn" onclick="start('${current}')">Check again</button><a class="smallbtn" href="#about">Emergency info</a></div></div><div class="note">${tr('note')}</div>`}
-</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cyber-Shield — interactive prototype for rapid verification of suspicious calls, messages, links and offers.">
+  <title>Cyber-Shield — Scam Contact Checker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="Cyber-Shield home">
+      <span class="brand-mark">⌁</span>
+      <span>Cyber<span>-</span>Shield</span>
+    </a>
+    <nav>
+      <a href="#checker" data-i18n="nav_checker">Checker</a>
+      <a href="#research" data-i18n="nav_research">Research</a>
+      <a href="#solutions" data-i18n="nav_solutions">Solutions</a>
+      <a href="#about" data-i18n="nav_about">About</a>
+    </nav>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button class="lang active" data-lang="en">EN</button>
+      <button class="lang" data-lang="ru">RU</button>
+      <button class="lang" data-lang="kk">KZ</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="section hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span><span data-i18n="eyebrow">RAPID THREAT VERIFICATION</span></div>
+        <h1 data-i18n="hero_title">Pause. Verify.<br><span>Protect yourself.</span></h1>
+        <p data-i18n="hero_text">Cyber-Shield is an interactive prototype that helps users assess suspicious calls, SMS messages, links and offers before they act.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#checker" data-i18n="hero_button">Check a contact <span>→</span></a>
+          <a class="btn ghost" href="#research" data-i18n="hero_research">View our research</a>
+        </div>
+        <div class="trust-row">
+          <div><strong>0</strong><span data-i18n="trust_database">personal data stored</span></div>
+          <div><strong>4</strong><span data-i18n="trust_scenarios">demo scenarios</span></div>
+          <div><strong>3</strong><span data-i18n="trust_levels">risk levels</span></div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="scan-ring"></div>
+        <div class="shield-icon">✓</div>
+        <div class="hero-card-label" data-i18n="prototype">INTERACTIVE PROTOTYPE</div>
+        <div class="hero-card-title">Threat<br>Check</div>
+        <div class="hero-card-line"><span></span><span></span><span></span></div>
+        <div class="hero-card-status"><i></i><span data-i18n="status_ready">Ready to verify</span></div>
+      </div>
+    </section>
+
+    <section id="checker" class="section checker-section">
+      <div class="section-heading">
+        <div class="eyebrow">01 / <span data-i18n="checker_eyebrow">CONTACT CHECKER</span></div>
+        <h2 data-i18n="checker_title">What are you dealing with?</h2>
+        <p data-i18n="checker_text">Choose the situation. The prototype will ask a few simple questions and give a preliminary risk level.</p>
+      </div>
+
+      <div class="checker-shell">
+        <div class="progress">
+          <div class="progress-top"><span id="stepLabel">Step 1 of 3</span><span id="stepPercent">33%</span></div>
+          <div class="progress-track"><div id="progressBar"></div></div>
+        </div>
+
+        <div id="checkerContent">
+          <div class="scenario-grid">
+            <button class="scenario" data-scenario="bank">
+              <span class="scenario-icon">₸</span>
+              <span class="scenario-title" data-i18n="bank_title">Bank call</span>
+              <span class="scenario-desc" data-i18n="bank_desc">Someone claims to be a bank employee.</span>
+              <span class="arrow">→</span>
+            </button>
+            <button class="scenario" data-scenario="sms">
+              <span class="scenario-icon">▣</span>
+              <span class="scenario-title" data-i18n="sms_title">SMS / message</span>
+              <span class="scenario-desc" data-i18n="sms_desc">A message asks you to click, pay or verify.</span>
+              <span class="arrow">→</span>
+            </button>
+            <button class="scenario" data-scenario="link">
+              <span class="scenario-icon">↗</span>
+              <span class="scenario-title" data-i18n="link_title">Suspicious link</span>
+              <span class="scenario-desc" data-i18n="link_desc">A website or URL looks unusual.</span>
+              <span class="arrow">→</span>
+            </button>
+            <button class="scenario" data-scenario="offer">
+              <span class="scenario-icon">%</span>
+              <span class="scenario-title" data-i18n="offer_title">Offer / investment</span>
+              <span class="scenario-desc" data-i18n="offer_desc">Someone promises profit or urgent rewards.</span>
+              <span class="arrow">→</span>
+            </button>
+          </div>
+          <div class="checker-note"><span>i</span><span data-i18n="checker_note">This is a research prototype, not a live fraud database. Never enter passwords, PINs, card numbers or SMS codes.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="research" class="section dark-section">
+      <div class="section-heading">
+        <div class="eyebrow">02 / <span data-i18n="research_eyebrow">RESEARCH SNAPSHOT</span></div>
+        <h2 data-i18n="research_title">The problem is growing — and human behaviour matters.</h2>
+        <p data-i18n="research_text">Our research combines statistical indicators, international comparison, literature review and analysis of existing solutions.</p>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card">
+          <span class="stat-kicker">KAZAKHSTAN</span>
+          <strong>22,870</strong>
+          <p data-i18n="stat1">registered internet-fraud cases in 2024</p>
+          <small>2022: 20,569 · 2023: 21,777</small>
+        </article>
+        <article class="stat-card">
+          <span class="stat-kicker">H1 2025</span>
+          <strong>+24.7%</strong>
+          <p data-i18n="stat2">more cases than in H1 2024</p>
+          <small data-i18n="stat2small">Research presentation indicator</small>
+        </article>
+        <article class="stat-card">
+          <span class="stat-kicker">GLOBAL</span>
+          <strong>$16.6B</strong>
+          <p data-i18n="stat3">FBI IC3 reported cybercrime losses in 2024</p>
+          <small>2021: $6.9B · 2022: $10.3B · 2023: $12.5B</small>
+        </article>
+        <article class="stat-card">
+          <span class="stat-kicker">HUMAN FACTOR</span>
+          <strong>38%</strong>
+          <p data-i18n="stat4">of FTC fraud reporters lost money in 2024</p>
+          <small data-i18n="stat4small">27% reported losses in 2023</small>
+        </article>
+      </div>
+
+      <div class="insight-grid">
+        <article class="insight">
+          <div class="insight-number">01</div>
+          <h3 data-i18n="insight1_title">Social engineering</h3>
+          <p data-i18n="insight1_text">Scammers exploit urgency, authority and emotional pressure. A technically secure device does not prevent a user from being manipulated.</p>
+        </article>
+        <article class="insight">
+          <div class="insight-number">02</div>
+          <h3 data-i18n="insight2_title">The usability gap</h3>
+          <p data-i18n="insight2_text">Existing tools often focus on technical detection or post-incident response. Users need a simple decision aid at the critical moment.</p>
+        </article>
+        <article class="insight">
+          <div class="insight-number">03</div>
+          <h3 data-i18n="insight3_title">Explain, don't scare</h3>
+          <p data-i18n="insight3_text">Literature reviewed by the team supports human-centred warnings: detect the risk, explain why, then guide the next action.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="solutions" class="section">
+      <div class="section-heading">
+        <div class="eyebrow">03 / <span data-i18n="solutions_eyebrow">EXISTING SOLUTIONS</span></div>
+        <h2 data-i18n="solutions_title">Cyber-Shield connects the missing pieces.</h2>
+      </div>
+      <div class="solution-table">
+        <div class="table-head"><span data-i18n="solution">Solution</span><span data-i18n="purpose">Purpose</span><span data-i18n="strength">Strength</span><span data-i18n="limitation">Limitation</span></div>
+        <div class="table-row"><strong>KZ-CERT</strong><span data-i18n="kz_purpose">Incident response & guidance</span><span data-i18n="kz_strength">Official, free hotline 1400</span><span data-i18n="kz_limit">Not a simple real-time assistant</span></div>
+        <div class="table-row"><strong>Google Safe Browsing</strong><span data-i18n="google_purpose">Dangerous site / file warnings</span><span data-i18n="google_strength">Automated web protection</span><span data-i18n="google_limit">Web-focused, limited scam context</span></div>
+        <div class="table-row"><strong>Truecaller</strong><span data-i18n="true_purpose">Caller ID & spam warnings</span><span data-i18n="true_strength">Real-time call warnings</span><span data-i18n="true_limit">Focused mainly on calls</span></div>
+        <div class="table-row highlight"><strong>Cyber-Shield</strong><span data-i18n="cs_purpose">Rapid threat verification</span><span data-i18n="cs_strength">Simple, human-centred decision tree</span><span data-i18n="cs_limit">Prototype; no live database</span></div>
+      </div>
+
+      <div class="workflow">
+        <div class="workflow-step"><b>01</b><span class="wf-icon">◈</span><h3 data-i18n="wf1">Choose</h3><p data-i18n="wf1d">Bank call, SMS, link or offer</p></div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-step"><b>02</b><span class="wf-icon">?</span><h3 data-i18n="wf2">Answer</h3><p data-i18n="wf2d">Simple button questions</p></div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-step"><b>03</b><span class="wf-icon">◒</span><h3 data-i18n="wf3">Risk level</h3><p data-i18n="wf3d">Low · Careful · High</p></div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-step"><b>04</b><span class="wf-icon">✓</span><h3 data-i18n="wf4">Act</h3><p data-i18n="wf4d">Stop · verify · report</p></div>
+      </div>
+    </section>
+
+    <section id="about" class="section about-section">
+      <div class="about-card">
+        <div class="eyebrow">04 / <span data-i18n="about_eyebrow">PROJECT</span></div>
+        <h2>Cyber-Shield</h2>
+        <p data-i18n="about_text">A university ICT research project focused on telephone and Internet scams. The concept is intentionally lightweight: HTML, CSS and JavaScript can demonstrate the decision tree without requiring a database or costly AI.</p>
+        <div class="team">
+          <span>Mukhtarova Shyryn</span>
+          <span>Abyl Nazerke</span>
+          <span>Sagidulla Amanbek</span>
+          <span>Tulegenov Aibek</span>
+          <span>Nurkamitova Aiganym</span>
+        </div>
+        <div class="privacy"><span>⌕</span><span data-i18n="privacy">Privacy first: the prototype does not ask for passwords, PINs, card details or verification codes.</span></div>
+      </div>
+      <aside class="emergency-card">
+        <span class="emergency-label" data-i18n="emergency">IF MONEY IS STOLEN</span>
+        <strong>1400</strong>
+        <p data-i18n="emergency_text">Contact your bank immediately, then report the incident to the appropriate authorities. Cyber-Shield supports — but does not replace — banks, police and CERTs.</p>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    <span>Cyber-Shield · ICT-2614 · 2026</span>
+    <span data-i18n="footer">Research prototype · Preliminary risk assessment only</span>
+  </footer>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-card">
+      <button class="modal-close" id="closeModal">×</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
